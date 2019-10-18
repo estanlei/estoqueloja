@@ -1,0 +1,53 @@
+<div class="row" style="padding-bottom:10px;">
+
+    <div class="col-lg-1" style="padding-top:3px;padding-left:25px;">
+        <h5 style="float:left;"><strong>Pesquisar:</strong></h5>
+    </div>
+    <div class="col-lg-7" style="padding-top:3px;padding-left:21px;">
+        <input type="text" id="" name="" style="width:80% !important;float:left;"
+            class="form-control form-control-filtro" placeholder="Digite o Termo de Busca">
+
+        <a href="javascript:void" class="btn btn-default btn-icon" (click)="emitPesquisar()" style="font-size: 14px; float:left;"
+            title="Pesquisar">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+
+        <a href="javascript:void(0)" (click)="limparFiltros()" class="btn btn-default btn-icon"
+            style="font-size: 14px; float:left;" title="Limpar filtros">
+            <span class="glyphicon glyphicon-remove text-danger"></span>
+        </a>
+    </div>
+    <div class="col-lg-3" style="padding-top:3px; padding-left:0px;" *ngIf="lstfiltro">
+        <a href="javascript:void" (click)="setStep(1)" style="font-size: 14px; float:left;" title="Mais filtros"  
+         *ngIf="step==0">
+            <h5><span class="glyphicon glyphicon-plus red"></span><strong> Mais filtros</strong></h5>
+
+        </a>
+        <a href="javascript:void" (click)="setStep(0)" style="font-size: 14px; float:left;" title="Mais filtros"  
+         *ngIf="step>0">
+           <h5><span class="glyphicon glyphicon-minus red"></span><strong> Menos filtros</strong></h5>
+
+       </a>
+    </div>
+</div>
+
+<mat-accordion *ngIf="lstfiltro">
+    <mat-expansion-panel class="filtroPesquisa" [expanded]="step > 0">
+        <!--
+                <mat-form-field *ngFor="let item of lstfiltro" class="col-lg-3">
+                    <input matInput placeholder={{item?.FIL_DESCRICAO}}>
+                </mat-form-field>
+-->
+        <div *ngFor="let item of lstfiltro"  class="row" style=" padding-bottom:10px;">    
+                <div class="col-lg-1" style="padding-top:3px;padding-left:0px; ">
+                    <h5 style="float:left;"><strong>{{item?.FIL_DESCRICAO}}:</strong></h5>
+                </div>
+                <div class="col-lg-7" style="padding-top:3px;padding-left:0px; ">
+                    <input class="form-control" name={{item?.FIL_DESCRICAO}} placeholder={{item?.FIL_DESCRICAO}}
+                        [(ngModel)]="item.FIL_VALUE">
+                </div>
+            
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,22 @@
+<aside class="main-sidebar">
+    <section class="sidebar">
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header"> <a [routerLink]='["/"]'><i class="fa fa-home"></i> HOME</a> </li>    
+            <li class="treeview" *ngFor="let menu of lstmenu">
+                <a >
+                    <i class="fa fa-edit"></i>
+                    <i ng-class="menu.MEN_LOGO"></i> 
+                    <span><strong>{{menu?.MEN_DESCRICAO}}</strong></span>
+                    <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li *ngFor="let submenu of menu.ITEM_MENU">
+                        <a  [routerLink]=[submenu?.MEN_PATH]>{{submenu?.MEN_DESCRICAO}}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>

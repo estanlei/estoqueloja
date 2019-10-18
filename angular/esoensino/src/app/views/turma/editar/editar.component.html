@@ -1,0 +1,146 @@
+
+<form [formGroup]="turmaForm">
+    <div class="padding content">
+        <div class="box box-warning direct-chat direct-chat-warning">
+            <div class="box-header with-border">
+                <h3 class="box-title"> <span class="glyphicon glyphicon glyphicon-edit "></span> Turma </h3>
+                <div class="box-tools pull-right">
+                    <a [routerLink]='["/turma"]' class="btn btn-box-tool"><i
+                            class="glyphicon glyphicon-share-alt"></i></a>
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse" title="Minimizar">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove" title="Fechar">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <app-formheader (salvar)="salvar($event)" (excluir)="excluir($event)" (refresh)="refresh($event)">
+            </app-formheader>
+            <div class="box-body">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Código</mat-label>
+                                <input matInput  formControlName="TUR_ID">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-5">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Nome da Turma</mat-label>
+                                <input matInput formControlName="TUR_NOME">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-5">
+                            <app-findcurso [curID]="turmaForm.value.CUR_ID" (setID)="setCursoID($event)"></app-findcurso>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Ano/Série/Módulo/Período</mat-label>
+                                <input matInput formControlName="TUR_ANOSERIE">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Período</mat-label>
+                                <mat-select #fontSize value="16px" formControlName="TUR_PERIODO">
+                                    <mat-option value="1">Manhã</mat-option>
+                                    <mat-option value="2">Tarde</mat-option>
+                                    <mat-option value="3">Noite</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Ano Letivo</mat-label>
+                                <mat-select #fontSize value="16px" formControlName="TUR_ANOLETIVO">
+                                    <mat-option value="1">2019</mat-option>
+                                    <mat-option value="2">2018</mat-option>
+                                    <mat-option value="3">2017</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Ano Grade</mat-label>
+                                <mat-select #fontSize value="16px" formControlName="TUR_ANOGRADE">
+                                    <mat-option value="1">2019</mat-option>
+                                    <mat-option value="2">2018</mat-option>
+                                    <mat-option value="3">2017</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Data Inicio</mat-label>
+                                <input matInput formControlName="TUR_DATINI">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Data Final</mat-label>
+                                <input matInput formControlName="TUR_DATFIM">
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Qtde Alunos</mat-label>
+                                <input matInput formControlName="TUR_QTDEALUNOS">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Tipo Turma</mat-label>
+                                <mat-select #fontSize value="16px" formControlName="TIP_TUR_ID">
+                                    <mat-option value="1">Normal</mat-option>
+                                    <mat-option value="2">Reposição</mat-option>
+                                    <mat-option value="3">Depêndencia</mat-option>
+                                    <mat-option value="2">Multseriada</mat-option>
+                                    <mat-option value="3">Integral</mat-option>
+                                    <mat-option value="3">EAD</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-4">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Unidade</mat-label>
+                                <mat-select #fontSize value="16px" formControlName="ESC_ID">
+                                    <mat-option value="1">Normal</mat-option>
+                                    <mat-option value="2">Reposição</mat-option>
+                                    <mat-option value="3">Depêndencia</mat-option>
+                                    <mat-option value="2">Multseriada</mat-option>
+                                    <mat-option value="3">Integral</mat-option>
+                                    <mat-option value="3">EAD</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-2">
+                            <mat-form-field appearance="fill">
+                                <mat-label>N° Sala</mat-label>
+                                <input matInput formControlName="SAL_ID">
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="box-footer">
+                <a type="button" class="btn btn-default" [routerLink]='["/turma"]' style="margin-right: 5px;">
+                    <span class="glyphicon glyphicon-chevron-left blue"></span> Fechar
+                </a>
+                <button type="button" class="btn btn-success" (click)="salvar()">
+                    <span class="glyphicon glyphicon-floppy-save blue"></span> Salvar
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
