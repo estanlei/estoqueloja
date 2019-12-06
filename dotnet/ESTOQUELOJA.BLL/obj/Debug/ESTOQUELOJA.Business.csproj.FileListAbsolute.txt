@@ -1,0 +1,16 @@
+C:\projetos\dotnet\ESTOQUELOJA.BLL\obj\Debug\ESTOQUELOJA.Business.csprojAssemblyReference.cache
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.BLL.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.BLL.pdb
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.DTO.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\EntityFramework.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\AutoMapper.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.DTO.pdb
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\EntityFramework.xml
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\AutoMapper.pdb
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\AutoMapper.xml
+C:\projetos\dotnet\ESTOQUELOJA.BLL\obj\Debug\ESTOQUELOJA.Business.csproj.CopyComplete
+C:\projetos\dotnet\ESTOQUELOJA.BLL\obj\Debug\ESTOQUELOJA.BLL.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\obj\Debug\ESTOQUELOJA.BLL.pdb
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.DAO.dll
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.DAO.pdb
+C:\projetos\dotnet\ESTOQUELOJA.BLL\bin\Debug\ESTOQUELOJA.DAO.dll.config
