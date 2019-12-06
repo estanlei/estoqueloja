@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="estoquelojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_ID" Type="int" />
+          <Property Name="LOG_DESCRICAO" Type="varchar" MaxLength="400" />
+          <Property Name="LOG_DATA" Type="datetime" />
+          <Property Name="USU_LOGIN" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="PRODUTO">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PRO_DESCRICAO" Type="varchar" MaxLength="70" />
+          <Property Name="PRO_VLR_UN" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PRO_MARGEM_LUCRO" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PRO_QTD_ESTOQUE" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USU_LOGIN" />
+          </Key>
+          <Property Name="USU_LOGIN" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="USU_NOME" Type="varchar" MaxLength="70" />
+          <Property Name="USU_SENHA" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="USU_ADMIN" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_LOG_PRODUTO">
+          <End Role="PRODUTO" Type="Self.PRODUTO" Multiplicity="0..1" />
+          <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUTO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="LOG">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+          <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USU_LOGIN" />
+            </Principal>
+            <Dependent Role="LOG">
+              <PropertyRef Name="USU_LOGIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="estoquelojaModelStoreContainer">
+          <EntitySet Name="LOG" EntityType="Self.LOG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUTO" EntityType="Self.PRODUTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LOG_PRODUTO" Association="Self.FK_LOG_PRODUTO">
+            <End Role="PRODUTO" EntitySet="PRODUTO" />
+            <End Role="LOG" EntitySet="LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_USUARIO" Association="Self.FK_LOG_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG" EntitySet="LOG" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="estoquelojaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PRODUTO">
+          <Key>
+            <PropertyRef Name="PRO_ID" />
+          </Key>
+          <Property Name="PRO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_DESCRICAO" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="PRO_VLR_UN" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PRO_MARGEM_LUCRO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PRO_QTD_ESTOQUE" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="LOG" Relationship="estoquelojaModel.FK_LOG_PRODUTO" FromRole="PRODUTO" ToRole="LOG" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="USU_LOGIN" />
+          </Key>
+          <Property Name="USU_LOGIN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_NOME" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="USU_SENHA" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USU_ADMIN" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LOG" Relationship="estoquelojaModel.FK_LOG_USUARIO" FromRole="USUARIO" ToRole="LOG" />
+        </EntityType>
+        <EntityContainer Name="estoquelojaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PRODUTO" EntityType="Self.PRODUTO" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+          <EntitySet Name="LOG" EntityType="estoquelojaModel.LOG" />
+          <AssociationSet Name="FK_LOG_PRODUTO" Association="estoquelojaModel.FK_LOG_PRODUTO">
+            <End Role="PRODUTO" EntitySet="PRODUTO" />
+            <End Role="LOG" EntitySet="LOG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LOG_USUARIO" Association="estoquelojaModel.FK_LOG_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="LOG" EntitySet="LOG" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="LOG">
+          <Key>
+            <PropertyRef Name="LOG_ID" />
+          </Key>
+          <Property Name="LOG_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PRO_ID" Type="Int32" />
+          <Property Name="LOG_DESCRICAO" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="LOG_DATA" Type="DateTime" Precision="3" />
+          <Property Name="USU_LOGIN" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="PRODUTO" Relationship="estoquelojaModel.FK_LOG_PRODUTO" FromRole="LOG" ToRole="PRODUTO" />
+          <NavigationProperty Name="USUARIO" Relationship="estoquelojaModel.FK_LOG_USUARIO" FromRole="LOG" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_LOG_PRODUTO">
+          <End Type="estoquelojaModel.PRODUTO" Role="PRODUTO" Multiplicity="0..1" />
+          <End Type="estoquelojaModel.LOG" Role="LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUTO">
+              <PropertyRef Name="PRO_ID" />
+            </Principal>
+            <Dependent Role="LOG">
+              <PropertyRef Name="PRO_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LOG_USUARIO">
+          <End Type="estoquelojaModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+          <End Type="estoquelojaModel.LOG" Role="LOG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="USU_LOGIN" />
+            </Principal>
+            <Dependent Role="LOG">
+              <PropertyRef Name="USU_LOGIN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="estoquelojaModelStoreContainer" CdmEntityContainer="estoquelojaEntities">
+          <EntitySetMapping Name="PRODUTO">
+            <EntityTypeMapping TypeName="estoquelojaModel.PRODUTO">
+              <MappingFragment StoreEntitySet="PRODUTO">
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="PRO_DESCRICAO" ColumnName="PRO_DESCRICAO" />
+                <ScalarProperty Name="PRO_VLR_UN" ColumnName="PRO_VLR_UN" />
+                <ScalarProperty Name="PRO_MARGEM_LUCRO" ColumnName="PRO_MARGEM_LUCRO" />
+                <ScalarProperty Name="PRO_QTD_ESTOQUE" ColumnName="PRO_QTD_ESTOQUE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="estoquelojaModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+                <ScalarProperty Name="USU_NOME" ColumnName="USU_NOME" />
+                <ScalarProperty Name="USU_SENHA" ColumnName="USU_SENHA" />
+                <ScalarProperty Name="USU_ADMIN" ColumnName="USU_ADMIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOG">
+            <EntityTypeMapping TypeName="estoquelojaModel.LOG">
+              <MappingFragment StoreEntitySet="LOG">
+                <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+                <ScalarProperty Name="LOG_DATA" ColumnName="LOG_DATA" />
+                <ScalarProperty Name="LOG_DESCRICAO" ColumnName="LOG_DESCRICAO" />
+                <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+                <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

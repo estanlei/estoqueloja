@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="estoquelojaModelStoreContainer" CdmEntityContainer="estoquelojaEntities">
+    <EntitySetMapping Name="PRODUTO">
+      <EntityTypeMapping TypeName="estoquelojaModel.PRODUTO">
+        <MappingFragment StoreEntitySet="PRODUTO">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_DESCRICAO" ColumnName="PRO_DESCRICAO" />
+          <ScalarProperty Name="PRO_VLR_UN" ColumnName="PRO_VLR_UN" />
+          <ScalarProperty Name="PRO_MARGEM_LUCRO" ColumnName="PRO_MARGEM_LUCRO" />
+          <ScalarProperty Name="PRO_QTD_ESTOQUE" ColumnName="PRO_QTD_ESTOQUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="estoquelojaModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="USU_NOME" ColumnName="USU_NOME" />
+          <ScalarProperty Name="USU_SENHA" ColumnName="USU_SENHA" />
+          <ScalarProperty Name="USU_ADMIN" ColumnName="USU_ADMIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG">
+      <EntityTypeMapping TypeName="estoquelojaModel.LOG">
+        <MappingFragment StoreEntitySet="LOG">
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="LOG_DATA" ColumnName="LOG_DATA" />
+          <ScalarProperty Name="LOG_DESCRICAO" ColumnName="LOG_DESCRICAO" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="LOG_ID" ColumnName="LOG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

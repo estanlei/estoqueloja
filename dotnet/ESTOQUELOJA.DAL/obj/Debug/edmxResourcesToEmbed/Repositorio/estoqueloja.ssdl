@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="estoquelojaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="LOG">
+    <Key>
+      <PropertyRef Name="LOG_ID" />
+    </Key>
+    <Property Name="LOG_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRO_ID" Type="int" />
+    <Property Name="LOG_DESCRICAO" Type="varchar" MaxLength="400" />
+    <Property Name="LOG_DATA" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="PRODUTO">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRO_DESCRICAO" Type="varchar" MaxLength="70" />
+    <Property Name="PRO_VLR_UN" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="PRO_MARGEM_LUCRO" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="PRO_QTD_ESTOQUE" Type="numeric" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="USU_LOGIN" />
+    </Key>
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="USU_NOME" Type="varchar" MaxLength="70" />
+    <Property Name="USU_SENHA" Type="varchar" MaxLength="80" Nullable="false" />
+    <Property Name="USU_ADMIN" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_LOG_PRODUTO">
+    <End Role="PRODUTO" Type="Self.PRODUTO" Multiplicity="0..1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUTO">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="LOG" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="USU_LOGIN" />
+      </Principal>
+      <Dependent Role="LOG">
+        <PropertyRef Name="USU_LOGIN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="estoquelojaModelStoreContainer">
+    <EntitySet Name="LOG" EntityType="Self.LOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUTO" EntityType="Self.PRODUTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_LOG_PRODUTO" Association="Self.FK_LOG_PRODUTO">
+      <End Role="PRODUTO" EntitySet="PRODUTO" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_USUARIO" Association="Self.FK_LOG_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="LOG" EntitySet="LOG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

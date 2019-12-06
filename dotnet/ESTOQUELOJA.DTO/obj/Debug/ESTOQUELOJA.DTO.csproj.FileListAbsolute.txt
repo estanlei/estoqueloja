@@ -1,0 +1,5 @@
+C:\projetos\dotnet\ESTOQUELOJA.DTO\bin\Debug\ESTOQUELOJA.DTO.dll
+C:\projetos\dotnet\ESTOQUELOJA.DTO\bin\Debug\ESTOQUELOJA.DTO.pdb
+C:\projetos\dotnet\ESTOQUELOJA.DTO\obj\Debug\ESTOQUELOJA.DTO.dll
+C:\projetos\dotnet\ESTOQUELOJA.DTO\obj\Debug\ESTOQUELOJA.DTO.pdb
+C:\projetos\dotnet\ESTOQUELOJA.DTO\obj\Debug\ESTOQUELOJA.DTO.csprojAssemblyReference.cache
