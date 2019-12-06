@@ -1,0 +1,700 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="esoensinoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ALUNO">
+    <Key>
+      <PropertyRef Name="ALU_ID" />
+    </Key>
+    <Property Name="ALU_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="ALU_NOME" Type="varchar" MaxLength="70" />
+    <Property Name="ALU_CPF_CNPJ" Type="varchar" MaxLength="14" />
+    <Property Name="ALU_EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="ALU_NOME_MAE" Type="varchar" MaxLength="70" />
+    <Property Name="ALU_NOME_PAI" Type="varchar" MaxLength="70" />
+    <Property Name="ALU_RG" Type="nchar" MaxLength="10" />
+    <Property Name="ALU_RG_ORGAO" Type="nchar" MaxLength="10" />
+    <Property Name="ALU_RG_DTEMISSAO" Type="datetime" />
+    <Property Name="ALU_CEL" Type="varchar" MaxLength="14" />
+    <Property Name="ALU_TEL" Type="varchar" MaxLength="14" />
+    <Property Name="CEP_NUMERO" Type="varchar" MaxLength="8" />
+    <Property Name="ALU_END_LOGRADOURO" Type="varchar" MaxLength="100" />
+    <Property Name="ALU_END_NUMERO" Type="varchar" MaxLength="20" />
+    <Property Name="ALU_END_COMPLEMENTO" Type="varchar" MaxLength="70" />
+    <Property Name="ALU_END_UF" Type="varchar" MaxLength="2" />
+    <Property Name="ALU_END_BAIRRO" Type="varchar" MaxLength="70" />
+    <Property Name="ALU_END_CIDADE" Type="varchar" MaxLength="100" />
+    <Property Name="ALU_GENERO" Type="int" />
+    <Property Name="ALU_DTNASCIMENTO" Type="datetime" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="ALUNO_FOTO">
+    <Key>
+      <PropertyRef Name="ALF_ID" />
+    </Key>
+    <Property Name="ALF_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ALU_ID" Type="int" Nullable="false" />
+    <Property Name="ALU_DOC_IMG" Type="varbinary(max)" />
+    <Property Name="ALU_PATH_IMG" Type="varchar" MaxLength="200" />
+    <Property Name="ALU_IMG_STRING" Type="varchar(max)" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="CURSO">
+    <Key>
+      <PropertyRef Name="CUR_ID" />
+    </Key>
+    <Property Name="CUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="CUR_NOME" Type="varchar" MaxLength="100" />
+    <Property Name="TIP_CUR_ID" Type="int" Nullable="false" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CURSO_DISCIPLINA">
+    <Key>
+      <PropertyRef Name="CUR_ID" />
+      <PropertyRef Name="DIS_ID" />
+    </Key>
+    <Property Name="CUR_ID" Type="int" Nullable="false" />
+    <Property Name="DIS_ID" Type="int" Nullable="false" />
+    <Property Name="DIS_CARGA_HORARIA" Type="int" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="DISCIPLINA">
+    <Key>
+      <PropertyRef Name="DIS_ID" />
+    </Key>
+    <Property Name="DIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DIS_NOME" Type="varchar" MaxLength="100" />
+    <Property Name="TIP_CUR_ID" Type="int" Nullable="false" />
+    <Property Name="EMP_ID" Type="int" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="EMPRESA">
+    <Key>
+      <PropertyRef Name="EMP_ID" />
+    </Key>
+    <Property Name="EMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EMP_RAZAO_SOCIAL" Type="varchar" MaxLength="100" />
+    <Property Name="EMP_NOME_FANTASIA" Type="varchar" MaxLength="100" />
+    <Property Name="EMP_CPF_CNPJ" Type="varchar" MaxLength="14" />
+    <Property Name="CEP_NUMERO" Type="varchar" MaxLength="8" />
+    <Property Name="EMP_END_LOGRADOURO" Type="varchar" MaxLength="100" />
+    <Property Name="EMP_END_NUMERO" Type="varchar" MaxLength="20" />
+    <Property Name="EMP_END_COMPLEMENTO" Type="varchar" MaxLength="70" />
+    <Property Name="EMP_END_UF" Type="varchar" MaxLength="2" />
+    <Property Name="EMP_END_BAIRRO" Type="varchar" MaxLength="70" />
+    <Property Name="CID_ID" Type="int" />
+    <Property Name="EMP_LOGO" Type="varbinary(max)" />
+    <Property Name="EMP_PATH_LOGO" Type="varchar" MaxLength="200" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+    <Property Name="EMP_ID_MATRIZ" Type="int" />
+  </EntityType>
+  <EntityType Name="MATRICULA">
+    <Key>
+      <PropertyRef Name="MAT_ID" />
+    </Key>
+    <Property Name="MAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAT_REF" Type="varchar" MaxLength="40" />
+    <Property Name="MAT_DATA" Type="datetime" />
+    <Property Name="CUR_ID" Type="int" />
+    <Property Name="TIP_MAT_ID" Type="int" />
+    <Property Name="MAT_ID_ANT" Type="int" />
+    <Property Name="ALU_ID" Type="int" />
+    <Property Name="MAT_ANO_LETIVO" Type="int" />
+    <Property Name="SER_ID" Type="int" />
+    <Property Name="PER_ID" Type="int" />
+    <Property Name="TUR_ID" Type="int" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="MATRICULA_TIPO">
+    <Key>
+      <PropertyRef Name="TIP_MAT_ID" />
+    </Key>
+    <Property Name="TIP_MAT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIP_MAT_DESCRICAO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="PERIODO">
+    <Key>
+      <PropertyRef Name="PER_ID" />
+    </Key>
+    <Property Name="PER_ID" Type="int" Nullable="false" />
+    <Property Name="PER_DESCRICAO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PROFESSOR">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PRO_NOME" Type="varchar" MaxLength="100" />
+    <Property Name="PRO_CPF_CNPJ" Type="varchar" MaxLength="14" />
+    <Property Name="CEP_NUMERO" Type="varchar" MaxLength="8" />
+    <Property Name="PRO_END_LOGRADOURO" Type="varchar" MaxLength="100" />
+    <Property Name="PRO_END_NUMERO" Type="varchar" MaxLength="20" />
+    <Property Name="PRO_END_COMPLEMENTO" Type="varchar" MaxLength="70" />
+    <Property Name="PRO_END_UF" Type="varchar" MaxLength="2" />
+    <Property Name="PRO_END_BAIRRO" Type="varchar" MaxLength="70" />
+    <Property Name="CID_ID" Type="int" />
+    <Property Name="EMP_ID" Type="int" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="PROFESSOR_DISCIPLINA">
+    <Key>
+      <PropertyRef Name="DIS_ID" />
+      <PropertyRef Name="PRO_ID" />
+    </Key>
+    <Property Name="DIS_ID" Type="int" Nullable="false" />
+    <Property Name="PRO_ID" Type="int" Nullable="false" />
+    <Property Name="PDIS_DATA" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PROFESSOR_TURMA">
+    <Key>
+      <PropertyRef Name="PRO_ID" />
+      <PropertyRef Name="TUR_ID" />
+    </Key>
+    <Property Name="PRO_ID" Type="int" Nullable="false" />
+    <Property Name="TUR_ID" Type="int" Nullable="false" />
+    <Property Name="PRO_TUR_DATA" Type="datetime" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="SALA">
+    <Key>
+      <PropertyRef Name="SAL_ID" />
+    </Key>
+    <Property Name="SAL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SAL_DESCRICAO" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SAL_QTDEALUNOS" Type="int" />
+    <Property Name="SAL_LABORATORIO" Type="bit" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="EMP_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="SERIE">
+    <Key>
+      <PropertyRef Name="SER_ID" />
+    </Key>
+    <Property Name="SER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CUR_ID" Type="int" Nullable="false" />
+    <Property Name="SER_DESCRICAO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="TIP_SERIE_ID" Type="int" Nullable="false" />
+    <Property Name="SER_DURACAO" Type="int" Nullable="false" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+  </EntityType>
+  <EntityType Name="SERIE_TIPO">
+    <Key>
+      <PropertyRef Name="TIP_SER_ID" />
+    </Key>
+    <Property Name="TIP_SER_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIP_SER_DESCRICAO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TIPO_CURSO">
+    <Key>
+      <PropertyRef Name="TIP_CUR_ID" />
+    </Key>
+    <Property Name="TIP_CUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIP_CUR_DESCRICAO" Type="varchar" MaxLength="70" />
+  </EntityType>
+  <EntityType Name="TIPO_TURMA">
+    <Key>
+      <PropertyRef Name="TIP_TUR_ID" />
+    </Key>
+    <Property Name="TIP_TUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TIP_TUR_DESCRICAO" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TURMA">
+    <Key>
+      <PropertyRef Name="TUR_ID" />
+    </Key>
+    <Property Name="TUR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TUR_NOME" Type="varchar" MaxLength="70" />
+    <Property Name="CUR_ID" Type="int" Nullable="false" />
+    <Property Name="SER_ID" Type="int" />
+    <Property Name="PER_ID" Type="int" Nullable="false" />
+    <Property Name="TUR_ANOLETIVO" Type="int" Nullable="false" />
+    <Property Name="TUR_ANOGRADE" Type="int" />
+    <Property Name="TUR_DATINI" Type="datetime" />
+    <Property Name="TUR_DATFIM" Type="datetime" />
+    <Property Name="TUR_QTDEALUNOS" Type="int" />
+    <Property Name="TIP_TUR_ID" Type="int" Nullable="false" />
+    <Property Name="SAL_ID" Type="int" />
+    <Property Name="EMP_ID" Type="int" Nullable="false" />
+    <Property Name="USU_LOGIN" Type="varchar" MaxLength="60" />
+    <Property Name="DATA_EXCLUSAO" Type="datetime" />
+    <Property Name="DATA_INCLUSAO" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ALUNO_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="ALUNO" Type="Self.ALUNO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="ALUNO">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ALUNO_FOTO_ALUNO">
+    <End Role="ALUNO" Type="Self.ALUNO" Multiplicity="1" />
+    <End Role="ALUNO_FOTO" Type="Self.ALUNO_FOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUNO">
+        <PropertyRef Name="ALU_ID" />
+      </Principal>
+      <Dependent Role="ALUNO_FOTO">
+        <PropertyRef Name="ALU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO_DISCIPLINA_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="CURSO_DISCIPLINA" Type="Self.CURSO_DISCIPLINA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="CUR_ID" />
+      </Principal>
+      <Dependent Role="CURSO_DISCIPLINA">
+        <PropertyRef Name="CUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO_DISCIPLINA_DISCIPLINA">
+    <End Role="DISCIPLINA" Type="Self.DISCIPLINA" Multiplicity="1" />
+    <End Role="CURSO_DISCIPLINA" Type="Self.CURSO_DISCIPLINA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISCIPLINA">
+        <PropertyRef Name="DIS_ID" />
+      </Principal>
+      <Dependent Role="CURSO_DISCIPLINA">
+        <PropertyRef Name="DIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CURSO_TIPO_CURSO">
+    <End Role="TIPO_CURSO" Type="Self.TIPO_CURSO" Multiplicity="1" />
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CURSO">
+        <PropertyRef Name="TIP_CUR_ID" />
+      </Principal>
+      <Dependent Role="CURSO">
+        <PropertyRef Name="TIP_CUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DISCIPLINA_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+    <End Role="DISCIPLINA" Type="Self.DISCIPLINA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="DISCIPLINA">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_ALUNO">
+    <End Role="ALUNO" Type="Self.ALUNO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ALUNO">
+        <PropertyRef Name="ALU_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="ALU_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="CUR_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="CUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_MATRICULA_TIPO">
+    <End Role="MATRICULA_TIPO" Type="Self.MATRICULA_TIPO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATRICULA_TIPO">
+        <PropertyRef Name="TIP_MAT_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="TIP_MAT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_PERIODO">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="PER_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="PER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_SERIE">
+    <End Role="SERIE" Type="Self.SERIE" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERIE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATRICULA_TURMA">
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="0..1" />
+    <End Role="MATRICULA" Type="Self.MATRICULA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TURMA">
+        <PropertyRef Name="TUR_ID" />
+      </Principal>
+      <Dependent Role="MATRICULA">
+        <PropertyRef Name="TUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESSOR_DISCIPLINA_DISCIPLINA">
+    <End Role="DISCIPLINA" Type="Self.DISCIPLINA" Multiplicity="1" />
+    <End Role="PROFESSOR_DISCIPLINA" Type="Self.PROFESSOR_DISCIPLINA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISCIPLINA">
+        <PropertyRef Name="DIS_ID" />
+      </Principal>
+      <Dependent Role="PROFESSOR_DISCIPLINA">
+        <PropertyRef Name="DIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESSOR_DISCIPLINA_PROFESSOR">
+    <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="1" />
+    <End Role="PROFESSOR_DISCIPLINA" Type="Self.PROFESSOR_DISCIPLINA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESSOR">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="PROFESSOR_DISCIPLINA">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESSOR_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+    <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="PROFESSOR">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESSOR_TURMA_PROFESSOR">
+    <End Role="PROFESSOR" Type="Self.PROFESSOR" Multiplicity="1" />
+    <End Role="PROFESSOR_TURMA" Type="Self.PROFESSOR_TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROFESSOR">
+        <PropertyRef Name="PRO_ID" />
+      </Principal>
+      <Dependent Role="PROFESSOR_TURMA">
+        <PropertyRef Name="PRO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROFESSOR_TURMA_TURMA">
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="1" />
+    <End Role="PROFESSOR_TURMA" Type="Self.PROFESSOR_TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TURMA">
+        <PropertyRef Name="TUR_ID" />
+      </Principal>
+      <Dependent Role="PROFESSOR_TURMA">
+        <PropertyRef Name="TUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SALA_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="0..1" />
+    <End Role="SALA" Type="Self.SALA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="SALA">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SERIE_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="SERIE" Type="Self.SERIE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="CUR_ID" />
+      </Principal>
+      <Dependent Role="SERIE">
+        <PropertyRef Name="CUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SERIE_SERIE_TIPO">
+    <End Role="SERIE_TIPO" Type="Self.SERIE_TIPO" Multiplicity="1" />
+    <End Role="SERIE" Type="Self.SERIE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERIE_TIPO">
+        <PropertyRef Name="TIP_SER_ID" />
+      </Principal>
+      <Dependent Role="SERIE">
+        <PropertyRef Name="TIP_SERIE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_CURSO">
+    <End Role="CURSO" Type="Self.CURSO" Multiplicity="1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CURSO">
+        <PropertyRef Name="CUR_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="CUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_EMPRESA">
+    <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPRESA">
+        <PropertyRef Name="EMP_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="EMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_PERIODO">
+    <End Role="PERIODO" Type="Self.PERIODO" Multiplicity="1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERIODO">
+        <PropertyRef Name="PER_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="PER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_SALA">
+    <End Role="SALA" Type="Self.SALA" Multiplicity="0..1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SALA">
+        <PropertyRef Name="SAL_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="SAL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_SERIE">
+    <End Role="SERIE" Type="Self.SERIE" Multiplicity="0..1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERIE">
+        <PropertyRef Name="SER_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="SER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TURMA_TIPO_TURMA">
+    <End Role="TIPO_TURMA" Type="Self.TIPO_TURMA" Multiplicity="1" />
+    <End Role="TURMA" Type="Self.TURMA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_TURMA">
+        <PropertyRef Name="TIP_TUR_ID" />
+      </Principal>
+      <Dependent Role="TURMA">
+        <PropertyRef Name="TIP_TUR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="esoensinoModelStoreContainer">
+    <EntitySet Name="ALUNO" EntityType="Self.ALUNO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ALUNO_FOTO" EntityType="Self.ALUNO_FOTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSO" EntityType="Self.CURSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CURSO_DISCIPLINA" EntityType="Self.CURSO_DISCIPLINA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DISCIPLINA" EntityType="Self.DISCIPLINA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATRICULA" EntityType="Self.MATRICULA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MATRICULA_TIPO" EntityType="Self.MATRICULA_TIPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PERIODO" EntityType="Self.PERIODO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROFESSOR" EntityType="Self.PROFESSOR" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROFESSOR_DISCIPLINA" EntityType="Self.PROFESSOR_DISCIPLINA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROFESSOR_TURMA" EntityType="Self.PROFESSOR_TURMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SALA" EntityType="Self.SALA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERIE" EntityType="Self.SERIE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SERIE_TIPO" EntityType="Self.SERIE_TIPO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_CURSO" EntityType="Self.TIPO_CURSO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_TURMA" EntityType="Self.TIPO_TURMA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TURMA" EntityType="Self.TURMA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ALUNO_EMPRESA" Association="Self.FK_ALUNO_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="ALUNO" EntitySet="ALUNO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ALUNO_FOTO_ALUNO" Association="Self.FK_ALUNO_FOTO_ALUNO">
+      <End Role="ALUNO" EntitySet="ALUNO" />
+      <End Role="ALUNO_FOTO" EntitySet="ALUNO_FOTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO_DISCIPLINA_CURSO" Association="Self.FK_CURSO_DISCIPLINA_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="CURSO_DISCIPLINA" EntitySet="CURSO_DISCIPLINA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO_DISCIPLINA_DISCIPLINA" Association="Self.FK_CURSO_DISCIPLINA_DISCIPLINA">
+      <End Role="DISCIPLINA" EntitySet="DISCIPLINA" />
+      <End Role="CURSO_DISCIPLINA" EntitySet="CURSO_DISCIPLINA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO_EMPRESA" Association="Self.FK_CURSO_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CURSO_TIPO_CURSO" Association="Self.FK_CURSO_TIPO_CURSO">
+      <End Role="TIPO_CURSO" EntitySet="TIPO_CURSO" />
+      <End Role="CURSO" EntitySet="CURSO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DISCIPLINA_EMPRESA" Association="Self.FK_DISCIPLINA_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="DISCIPLINA" EntitySet="DISCIPLINA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_ALUNO" Association="Self.FK_MATRICULA_ALUNO">
+      <End Role="ALUNO" EntitySet="ALUNO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_CURSO" Association="Self.FK_MATRICULA_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_MATRICULA_TIPO" Association="Self.FK_MATRICULA_MATRICULA_TIPO">
+      <End Role="MATRICULA_TIPO" EntitySet="MATRICULA_TIPO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_PERIODO" Association="Self.FK_MATRICULA_PERIODO">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_SERIE" Association="Self.FK_MATRICULA_SERIE">
+      <End Role="SERIE" EntitySet="SERIE" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATRICULA_TURMA" Association="Self.FK_MATRICULA_TURMA">
+      <End Role="TURMA" EntitySet="TURMA" />
+      <End Role="MATRICULA" EntitySet="MATRICULA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESSOR_DISCIPLINA_DISCIPLINA" Association="Self.FK_PROFESSOR_DISCIPLINA_DISCIPLINA">
+      <End Role="DISCIPLINA" EntitySet="DISCIPLINA" />
+      <End Role="PROFESSOR_DISCIPLINA" EntitySet="PROFESSOR_DISCIPLINA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESSOR_DISCIPLINA_PROFESSOR" Association="Self.FK_PROFESSOR_DISCIPLINA_PROFESSOR">
+      <End Role="PROFESSOR" EntitySet="PROFESSOR" />
+      <End Role="PROFESSOR_DISCIPLINA" EntitySet="PROFESSOR_DISCIPLINA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESSOR_EMPRESA" Association="Self.FK_PROFESSOR_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="PROFESSOR" EntitySet="PROFESSOR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESSOR_TURMA_PROFESSOR" Association="Self.FK_PROFESSOR_TURMA_PROFESSOR">
+      <End Role="PROFESSOR" EntitySet="PROFESSOR" />
+      <End Role="PROFESSOR_TURMA" EntitySet="PROFESSOR_TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROFESSOR_TURMA_TURMA" Association="Self.FK_PROFESSOR_TURMA_TURMA">
+      <End Role="TURMA" EntitySet="TURMA" />
+      <End Role="PROFESSOR_TURMA" EntitySet="PROFESSOR_TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SALA_EMPRESA" Association="Self.FK_SALA_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="SALA" EntitySet="SALA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SERIE_CURSO" Association="Self.FK_SERIE_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="SERIE" EntitySet="SERIE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SERIE_SERIE_TIPO" Association="Self.FK_SERIE_SERIE_TIPO">
+      <End Role="SERIE_TIPO" EntitySet="SERIE_TIPO" />
+      <End Role="SERIE" EntitySet="SERIE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_CURSO" Association="Self.FK_TURMA_CURSO">
+      <End Role="CURSO" EntitySet="CURSO" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_EMPRESA" Association="Self.FK_TURMA_EMPRESA">
+      <End Role="EMPRESA" EntitySet="EMPRESA" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_PERIODO" Association="Self.FK_TURMA_PERIODO">
+      <End Role="PERIODO" EntitySet="PERIODO" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_SALA" Association="Self.FK_TURMA_SALA">
+      <End Role="SALA" EntitySet="SALA" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_SERIE" Association="Self.FK_TURMA_SERIE">
+      <End Role="SERIE" EntitySet="SERIE" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TURMA_TIPO_TURMA" Association="Self.FK_TURMA_TIPO_TURMA">
+      <End Role="TIPO_TURMA" EntitySet="TIPO_TURMA" />
+      <End Role="TURMA" EntitySet="TURMA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

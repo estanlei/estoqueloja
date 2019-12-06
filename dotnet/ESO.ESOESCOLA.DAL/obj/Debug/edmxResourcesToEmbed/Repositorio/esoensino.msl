@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="esoensinoModelStoreContainer" CdmEntityContainer="esoensinoEntities">
+    <EntitySetMapping Name="ALUNO">
+      <EntityTypeMapping TypeName="esoensinoModel.ALUNO">
+        <MappingFragment StoreEntitySet="ALUNO">
+          <ScalarProperty Name="ALU_ID" ColumnName="ALU_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="ALU_NOME" ColumnName="ALU_NOME" />
+          <ScalarProperty Name="ALU_CPF_CNPJ" ColumnName="ALU_CPF_CNPJ" />
+          <ScalarProperty Name="ALU_EMAIL" ColumnName="ALU_EMAIL" />
+          <ScalarProperty Name="ALU_NOME_MAE" ColumnName="ALU_NOME_MAE" />
+          <ScalarProperty Name="ALU_NOME_PAI" ColumnName="ALU_NOME_PAI" />
+          <ScalarProperty Name="ALU_RG" ColumnName="ALU_RG" />
+          <ScalarProperty Name="ALU_RG_ORGAO" ColumnName="ALU_RG_ORGAO" />
+          <ScalarProperty Name="ALU_RG_DTEMISSAO" ColumnName="ALU_RG_DTEMISSAO" />
+          <ScalarProperty Name="ALU_CEL" ColumnName="ALU_CEL" />
+          <ScalarProperty Name="ALU_TEL" ColumnName="ALU_TEL" />
+          <ScalarProperty Name="CEP_NUMERO" ColumnName="CEP_NUMERO" />
+          <ScalarProperty Name="ALU_END_LOGRADOURO" ColumnName="ALU_END_LOGRADOURO" />
+          <ScalarProperty Name="ALU_END_NUMERO" ColumnName="ALU_END_NUMERO" />
+          <ScalarProperty Name="ALU_END_COMPLEMENTO" ColumnName="ALU_END_COMPLEMENTO" />
+          <ScalarProperty Name="ALU_END_UF" ColumnName="ALU_END_UF" />
+          <ScalarProperty Name="ALU_END_BAIRRO" ColumnName="ALU_END_BAIRRO" />
+          <ScalarProperty Name="ALU_END_CIDADE" ColumnName="ALU_END_CIDADE" />
+          <ScalarProperty Name="ALU_GENERO" ColumnName="ALU_GENERO" />
+          <ScalarProperty Name="ALU_DTNASCIMENTO" ColumnName="ALU_DTNASCIMENTO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ALUNO_FOTO">
+      <EntityTypeMapping TypeName="esoensinoModel.ALUNO_FOTO">
+        <MappingFragment StoreEntitySet="ALUNO_FOTO">
+          <ScalarProperty Name="ALF_ID" ColumnName="ALF_ID" />
+          <ScalarProperty Name="ALU_ID" ColumnName="ALU_ID" />
+          <ScalarProperty Name="ALU_DOC_IMG" ColumnName="ALU_DOC_IMG" />
+          <ScalarProperty Name="ALU_PATH_IMG" ColumnName="ALU_PATH_IMG" />
+          <ScalarProperty Name="ALU_IMG_STRING" ColumnName="ALU_IMG_STRING" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO">
+      <EntityTypeMapping TypeName="esoensinoModel.CURSO">
+        <MappingFragment StoreEntitySet="CURSO">
+          <ScalarProperty Name="CUR_ID" ColumnName="CUR_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="CUR_NOME" ColumnName="CUR_NOME" />
+          <ScalarProperty Name="TIP_CUR_ID" ColumnName="TIP_CUR_ID" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURSO_DISCIPLINA">
+      <EntityTypeMapping TypeName="esoensinoModel.CURSO_DISCIPLINA">
+        <MappingFragment StoreEntitySet="CURSO_DISCIPLINA">
+          <ScalarProperty Name="CUR_ID" ColumnName="CUR_ID" />
+          <ScalarProperty Name="DIS_ID" ColumnName="DIS_ID" />
+          <ScalarProperty Name="DIS_CARGA_HORARIA" ColumnName="DIS_CARGA_HORARIA" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISCIPLINA">
+      <EntityTypeMapping TypeName="esoensinoModel.DISCIPLINA">
+        <MappingFragment StoreEntitySet="DISCIPLINA">
+          <ScalarProperty Name="DIS_ID" ColumnName="DIS_ID" />
+          <ScalarProperty Name="DIS_NOME" ColumnName="DIS_NOME" />
+          <ScalarProperty Name="TIP_CUR_ID" ColumnName="TIP_CUR_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPRESA">
+      <EntityTypeMapping TypeName="esoensinoModel.EMPRESA">
+        <MappingFragment StoreEntitySet="EMPRESA">
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="EMP_RAZAO_SOCIAL" ColumnName="EMP_RAZAO_SOCIAL" />
+          <ScalarProperty Name="EMP_NOME_FANTASIA" ColumnName="EMP_NOME_FANTASIA" />
+          <ScalarProperty Name="EMP_CPF_CNPJ" ColumnName="EMP_CPF_CNPJ" />
+          <ScalarProperty Name="CEP_NUMERO" ColumnName="CEP_NUMERO" />
+          <ScalarProperty Name="EMP_END_LOGRADOURO" ColumnName="EMP_END_LOGRADOURO" />
+          <ScalarProperty Name="EMP_END_NUMERO" ColumnName="EMP_END_NUMERO" />
+          <ScalarProperty Name="EMP_END_COMPLEMENTO" ColumnName="EMP_END_COMPLEMENTO" />
+          <ScalarProperty Name="EMP_END_UF" ColumnName="EMP_END_UF" />
+          <ScalarProperty Name="EMP_END_BAIRRO" ColumnName="EMP_END_BAIRRO" />
+          <ScalarProperty Name="CID_ID" ColumnName="CID_ID" />
+          <ScalarProperty Name="EMP_LOGO" ColumnName="EMP_LOGO" />
+          <ScalarProperty Name="EMP_PATH_LOGO" ColumnName="EMP_PATH_LOGO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="EMP_ID_MATRIZ" ColumnName="EMP_ID_MATRIZ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATRICULA">
+      <EntityTypeMapping TypeName="esoensinoModel.MATRICULA">
+        <MappingFragment StoreEntitySet="MATRICULA">
+          <ScalarProperty Name="MAT_ID" ColumnName="MAT_ID" />
+          <ScalarProperty Name="MAT_REF" ColumnName="MAT_REF" />
+          <ScalarProperty Name="MAT_DATA" ColumnName="MAT_DATA" />
+          <ScalarProperty Name="CUR_ID" ColumnName="CUR_ID" />
+          <ScalarProperty Name="TIP_MAT_ID" ColumnName="TIP_MAT_ID" />
+          <ScalarProperty Name="MAT_ID_ANT" ColumnName="MAT_ID_ANT" />
+          <ScalarProperty Name="ALU_ID" ColumnName="ALU_ID" />
+          <ScalarProperty Name="MAT_ANO_LETIVO" ColumnName="MAT_ANO_LETIVO" />
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+          <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+          <ScalarProperty Name="TUR_ID" ColumnName="TUR_ID" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATRICULA_TIPO">
+      <EntityTypeMapping TypeName="esoensinoModel.MATRICULA_TIPO">
+        <MappingFragment StoreEntitySet="MATRICULA_TIPO">
+          <ScalarProperty Name="TIP_MAT_ID" ColumnName="TIP_MAT_ID" />
+          <ScalarProperty Name="TIP_MAT_DESCRICAO" ColumnName="TIP_MAT_DESCRICAO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERIODO">
+      <EntityTypeMapping TypeName="esoensinoModel.PERIODO">
+        <MappingFragment StoreEntitySet="PERIODO">
+          <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+          <ScalarProperty Name="PER_DESCRICAO" ColumnName="PER_DESCRICAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESSOR">
+      <EntityTypeMapping TypeName="esoensinoModel.PROFESSOR">
+        <MappingFragment StoreEntitySet="PROFESSOR">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PRO_NOME" ColumnName="PRO_NOME" />
+          <ScalarProperty Name="PRO_CPF_CNPJ" ColumnName="PRO_CPF_CNPJ" />
+          <ScalarProperty Name="CEP_NUMERO" ColumnName="CEP_NUMERO" />
+          <ScalarProperty Name="PRO_END_LOGRADOURO" ColumnName="PRO_END_LOGRADOURO" />
+          <ScalarProperty Name="PRO_END_NUMERO" ColumnName="PRO_END_NUMERO" />
+          <ScalarProperty Name="PRO_END_COMPLEMENTO" ColumnName="PRO_END_COMPLEMENTO" />
+          <ScalarProperty Name="PRO_END_UF" ColumnName="PRO_END_UF" />
+          <ScalarProperty Name="PRO_END_BAIRRO" ColumnName="PRO_END_BAIRRO" />
+          <ScalarProperty Name="CID_ID" ColumnName="CID_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESSOR_DISCIPLINA">
+      <EntityTypeMapping TypeName="esoensinoModel.PROFESSOR_DISCIPLINA">
+        <MappingFragment StoreEntitySet="PROFESSOR_DISCIPLINA">
+          <ScalarProperty Name="DIS_ID" ColumnName="DIS_ID" />
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="PDIS_DATA" ColumnName="PDIS_DATA" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROFESSOR_TURMA">
+      <EntityTypeMapping TypeName="esoensinoModel.PROFESSOR_TURMA">
+        <MappingFragment StoreEntitySet="PROFESSOR_TURMA">
+          <ScalarProperty Name="PRO_ID" ColumnName="PRO_ID" />
+          <ScalarProperty Name="TUR_ID" ColumnName="TUR_ID" />
+          <ScalarProperty Name="PRO_TUR_DATA" ColumnName="PRO_TUR_DATA" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SALA">
+      <EntityTypeMapping TypeName="esoensinoModel.SALA">
+        <MappingFragment StoreEntitySet="SALA">
+          <ScalarProperty Name="SAL_ID" ColumnName="SAL_ID" />
+          <ScalarProperty Name="SAL_DESCRICAO" ColumnName="SAL_DESCRICAO" />
+          <ScalarProperty Name="SAL_QTDEALUNOS" ColumnName="SAL_QTDEALUNOS" />
+          <ScalarProperty Name="SAL_LABORATORIO" ColumnName="SAL_LABORATORIO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERIE">
+      <EntityTypeMapping TypeName="esoensinoModel.SERIE">
+        <MappingFragment StoreEntitySet="SERIE">
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+          <ScalarProperty Name="CUR_ID" ColumnName="CUR_ID" />
+          <ScalarProperty Name="SER_DESCRICAO" ColumnName="SER_DESCRICAO" />
+          <ScalarProperty Name="TIP_SERIE_ID" ColumnName="TIP_SERIE_ID" />
+          <ScalarProperty Name="SER_DURACAO" ColumnName="SER_DURACAO" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SERIE_TIPO">
+      <EntityTypeMapping TypeName="esoensinoModel.SERIE_TIPO">
+        <MappingFragment StoreEntitySet="SERIE_TIPO">
+          <ScalarProperty Name="TIP_SER_ID" ColumnName="TIP_SER_ID" />
+          <ScalarProperty Name="TIP_SER_DESCRICAO" ColumnName="TIP_SER_DESCRICAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_CURSO">
+      <EntityTypeMapping TypeName="esoensinoModel.TIPO_CURSO">
+        <MappingFragment StoreEntitySet="TIPO_CURSO">
+          <ScalarProperty Name="TIP_CUR_ID" ColumnName="TIP_CUR_ID" />
+          <ScalarProperty Name="TIP_CUR_DESCRICAO" ColumnName="TIP_CUR_DESCRICAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TURMA">
+      <EntityTypeMapping TypeName="esoensinoModel.TURMA">
+        <MappingFragment StoreEntitySet="TURMA">
+          <ScalarProperty Name="TUR_ID" ColumnName="TUR_ID" />
+          <ScalarProperty Name="TUR_NOME" ColumnName="TUR_NOME" />
+          <ScalarProperty Name="CUR_ID" ColumnName="CUR_ID" />
+          <ScalarProperty Name="SER_ID" ColumnName="SER_ID" />
+          <ScalarProperty Name="PER_ID" ColumnName="PER_ID" />
+          <ScalarProperty Name="TUR_ANOLETIVO" ColumnName="TUR_ANOLETIVO" />
+          <ScalarProperty Name="TUR_ANOGRADE" ColumnName="TUR_ANOGRADE" />
+          <ScalarProperty Name="TUR_DATINI" ColumnName="TUR_DATINI" />
+          <ScalarProperty Name="TUR_DATFIM" ColumnName="TUR_DATFIM" />
+          <ScalarProperty Name="TUR_QTDEALUNOS" ColumnName="TUR_QTDEALUNOS" />
+          <ScalarProperty Name="TIP_TUR_ID" ColumnName="TIP_TUR_ID" />
+          <ScalarProperty Name="SAL_ID" ColumnName="SAL_ID" />
+          <ScalarProperty Name="EMP_ID" ColumnName="EMP_ID" />
+          <ScalarProperty Name="USU_LOGIN" ColumnName="USU_LOGIN" />
+          <ScalarProperty Name="DATA_EXCLUSAO" ColumnName="DATA_EXCLUSAO" />
+          <ScalarProperty Name="DATA_INCLUSAO" ColumnName="DATA_INCLUSAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_TURMA">
+      <EntityTypeMapping TypeName="esoensinoModel.TIPO_TURMA">
+        <MappingFragment StoreEntitySet="TIPO_TURMA">
+          <ScalarProperty Name="TIP_TUR_DESCRICAO" ColumnName="TIP_TUR_DESCRICAO" />
+          <ScalarProperty Name="TIP_TUR_ID" ColumnName="TIP_TUR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

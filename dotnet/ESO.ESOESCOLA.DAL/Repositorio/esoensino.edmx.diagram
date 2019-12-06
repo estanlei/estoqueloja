@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0bbc0d33d0444aeb042449020119f5b" Name="Diagram1">
+        <EntityTypeShape EntityType="esoensinoModel.ALUNO" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.ALUNO_FOTO" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.CURSO" Width="1.5" PointX="6" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.CURSO_DISCIPLINA" Width="1.5" PointX="8.25" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.DISCIPLINA" Width="1.5" PointX="3" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.EMPRESA" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.MATRICULA" Width="1.5" PointX="8.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.MATRICULA_TIPO" Width="1.5" PointX="6" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.PERIODO" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.PROFESSOR" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.PROFESSOR_DISCIPLINA" Width="1.5" PointX="5.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.PROFESSOR_TURMA" Width="1.5" PointX="15.75" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.SALA" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.SERIE" Width="1.5" PointX="11.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.SERIE_TIPO" Width="1.5" PointX="9" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.TIPO_CURSO" Width="1.5" PointX="3.75" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="esoensinoModel.TURMA" Width="1.5" PointX="13.5" PointY="20" IsExpanded="true" />
+        <AssociationConnector Association="esoensinoModel.FK_ALUNO_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_ALUNO_FOTO_ALUNO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_ALUNO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_CURSO_DISCIPLINA_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_CURSO_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_CURSO_TIPO_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_SERIE_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_CURSO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_CURSO_DISCIPLINA_DISCIPLINA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_DISCIPLINA_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_PROFESSOR_DISCIPLINA_DISCIPLINA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_PROFESSOR_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_SALA_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_EMPRESA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_MATRICULA_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_PERIODO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_SERIE" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_MATRICULA_TURMA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_PERIODO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_PROFESSOR_DISCIPLINA_PROFESSOR" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_PROFESSOR_TURMA_PROFESSOR" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_PROFESSOR_TURMA_TURMA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_SALA" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_SERIE_SERIE_TIPO" ManuallyRouted="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_SERIE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="esoensinoModel.TIPO_TURMA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="false" />
+        <AssociationConnector Association="esoensinoModel.FK_TURMA_TIPO_TURMA" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
