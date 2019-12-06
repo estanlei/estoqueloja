@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <form class="form-signin" [formGroup]="frmUsuario">
+            <div class="text-center mb-4">
+                <img class="mb-4" src="/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Editar Usuário</h1>
+            </div>
+
+            <div class="form-label-group">
+                <input id="Email" class="form-control" placeholder="Email" formControlName="USU_LOGIN" disabled>
+                <label for="Email">Email</label>
+            </div>
+            <div class="form-label-group">
+                <input type="text" id="Nome" class="form-control" placeholder="Nome do Usuário"
+                    formControlName="USU_NOME">
+                <label for="Nome">Nome</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="Nome" class="form-control" placeholder="Senha" formControlName="USU_SENHA">
+                <label for="Senha">Senha</label>
+            </div>
+            <div class="form-label-group">
+                <input type="checkbox" id="Unitário" class="form-control" formControlName="USU_ADMIN">
+                <label for="Admin">Admin</label>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="button" (click)="salvar()" *ngIf="admin==true">
+                <span class="fa fa-save"></span> Confirmar</button>
+            <hr />
+            <a href="javascript:void(0)" class="btn btn-lg btn-success btn-block" [routerLink]="['/usuario']">
+                <span class="fa fa-reply"></span> Voltar
+            </a>
+        </form>
+    </div>
+
+</div>

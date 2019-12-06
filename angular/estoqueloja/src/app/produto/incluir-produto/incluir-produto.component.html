@@ -1,0 +1,39 @@
+<div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form class="form-signin" [formGroup]="frmProduto">
+                <div class="text-center mb-4">
+                    <h1 class="h3 mb-3 font-weight-normal">Incluir Produto</h1>
+                </div>
+    
+                <div class="form-label-group">
+                    <input type="text" id="Nome" class="form-control" placeholder="Nome do Produto"
+                        formControlName="PRO_DESCRICAO">
+                    <label for="Nome">Nome</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" id="Unitário" class="form-control" placeholder="Pr Unitário"
+                        formControlName="PRO_VLR_UN">
+                    <label for="Unitário">Unitário</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" id="Margem" class="form-control" placeholder="Margem de Lucro"
+                        formControlName="PRO_MARGEM_LUCRO">
+                    <label for="Margem">Margem</label>
+                </div>
+                <div class="form-label-group">
+                    <input type="text" id="Estoque" class="form-control" placeholder="Estoque"
+                        formControlName="PRO_QTD_ESTOQUE">
+                    <label for="Estoque">Estoque</label>
+                </div>
+    
+                <button class="btn btn-lg btn-primary btn-block" type="button" (click)="salvar()">
+                    <span class="fa fa-save"></span> Confirmar</button>
+                <hr />
+                <a href="javascript:void(0)" class="btn btn-lg btn-success btn-block" [routerLink]="['/produto']">
+                    <span class="fa fa-reply"></span> Voltar
+                </a>
+            </form>
+        </div>
+    
+    </div>

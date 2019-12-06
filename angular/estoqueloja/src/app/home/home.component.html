@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-lg-4">
+
+  </div>
+  <div class="col-lg-4">
+    <div class="text-center mb-4">
+      <h1 class="h3 mb-3 font-weight-normal">Estoque Loja</h1>
+      <p>Selecione a opção desejada </p>
+    </div>
+    <a href="javascript:void(0)" class="btn btn-lg btn-primary btn-block" [routerLink]="['/usuario']">
+      <span class="fa fa-user-circle-o"></span> Usuários
+    </a>
+    <a href="javascript:void(0)" class="btn btn-lg btn-primary btn-block" [routerLink]="['/produto']">
+      <span class="fa fa-wrench"></span> Produtos
+    </a>
+    <a href="javascript:void(0)" class="btn btn-lg btn-primary btn-block" [routerLink]="['/log']">
+      <span class="fa fa-search"></span> Log
+    </a>
+    <hr/>
+    <a href="javascript:void(0)" class="btn btn-lg btn-success btn-block" (click)="logOut()" >
+      <span class="fa fa-reply"></span> Voltar
+    </a>
+
+  </div>
+</div>

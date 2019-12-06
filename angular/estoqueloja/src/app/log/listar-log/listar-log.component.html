@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">Lista Ocorrências</h1>
+        </div>
+
+
+        <div class="text-center col-lg-12" *ngIf="!lstlog || lstlog.length == 0">
+            <h4>Nenhum registro foi encontrado.</h4>
+        </div>
+
+        <div class="panel-body" *ngIf="lstlog" style="height: 400px; overflow:auto;">
+            <div class="table-responsive">
+                <table class="table no-margin">
+                    <thead>
+                        <th class="text-right">ID</th>
+                        <th class="text-right">ID Produto</th>
+                        <th>Descrição</th>
+                        <th class="text-center">Data</th>
+                        <th>Login</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of lstlog">
+                            <td class="text-right">{{item.LOG_ID}}</td>
+                            <td class="text-right">{{item.PRO_ID}}</td>
+                            <td>{{item.LOG_DESCRICAO}}</td>
+                            <td class="text-center">{{item.LOG_DATA | date:"dd/MM/yyyy"}}</td>
+                            <td>{{item.USU_LOGIN}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr />
+        
+        <a href="javascript:void(0)" class="btn btn-lg btn-success btn-block" [routerLink]="['/home']">
+            <span class="fa fa-reply"></span> Voltar
+        </a>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form class="form-signin" [formGroup]="frmLogin">
+            <div class="text-center mb-4">
+                <h1 class="h3 mb-3 font-weight-normal">Estoque Loja</h1>
+                <p>Informe seu email e senha para realizar o login </p>
+            </div>
+
+            <div class="form-label-group">
+                <input id="email" class="form-control" placeholder="Email" formControlName="USU_LOGIN">
+                <label for="email">Email</label>
+            </div>
+
+            <div class="form-label-group">
+                <input type="password" id="senha" class="form-control" placeholder="Senha"
+                    formControlName="USU_SENHA">
+                <label for="senha">Password</label>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" (click)="autenticarUsuario()">Realizar Login</button>
+        </form>
+    </div>
+
+</div>
