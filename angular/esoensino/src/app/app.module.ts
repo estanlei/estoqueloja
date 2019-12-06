@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EscolaComponent } from './views/escola/escola.component';
+import { EmpresaComponent } from './views/empresa/empresa.component';
 import { TurmaComponent } from './views/turma/turma.component';
 import { CursoComponent } from './views/curso/curso.component';
 import { DisciplinaComponent } from './views/disciplina/disciplina.component';
@@ -21,7 +21,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProfessorComponent } from './views/professor/professor.component';
 import { PaginadorComponent } from './componentes/paginador/paginador.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { FiltrosService } from './service/filtros.service';
 import { FiltropesquisaComponent } from './componentes/filtropesquisa/filtropesquisa.component';
 import { TurmaEditarComponent } from './views/turma/editar/editar.component';
 import { ProfessorEditarComponent } from './views/professor/editar/editar.component';
@@ -29,7 +28,21 @@ import { FormheaderComponent } from './componentes/formheader/formheader.compone
 import { CursoService } from './views/curso/curso.service';
 import { FindcursoComponent } from './views/curso/findcurso/findcurso.component';
 import { DialogViewComponent } from './componentes/dialog-view/dialog-view.component';
-import { TurmaService } from './views/turma/Turma.Service';
+import { FindsalaComponent } from './views/sala/findsala/findsala.component';
+import { FindperiodoComponent } from './views/periodo/findperiodo/findperiodo.component';
+import { FindturmaComponent } from './views/turma/findturma/findturma.component';
+import { FindprofessorComponent } from './views/professor/findprofessor/findprofessor.component';
+import { FinddisciplinaComponent } from './views/disciplina/finddisciplina/finddisciplina.component';
+import { FindtipoturmaComponent } from './views/tipoturma/findtipoturma/findtipoturma.component';
+import { FindempresaComponent } from './views/empresa/findempresa/findempresa.component';
+import { TurmaService } from './views/turma/turma.service';
+import { DisciplinaService } from './views/disciplina/disciplina.service';
+import { ProfessorService } from './views/professor/professor.service';
+import { SalaService } from './views/sala/Sala.service';
+import { PeriodoService } from './views/periodo/periodo.service';
+import { TipoTurmaService } from './views/tipoturma/tipoturma.service';
+import { EmpresaService } from './views/empresa/empresa.service';
+import { FindalunoComponent } from './views/aluno/findaluno/findaluno.component';
 
 
  
@@ -37,7 +50,7 @@ import { TurmaService } from './views/turma/Turma.Service';
   declarations: [
     AppComponent,
     AlunoComponent,
-    EscolaComponent,
+    EmpresaComponent,
     TurmaComponent,
     CursoComponent,
     DisciplinaComponent,
@@ -53,6 +66,14 @@ import { TurmaService } from './views/turma/Turma.Service';
     FormheaderComponent,
     FindcursoComponent,
     DialogViewComponent,
+    FindsalaComponent,
+    FindperiodoComponent,
+    FindturmaComponent,
+    FindprofessorComponent,
+    FinddisciplinaComponent,
+    FindtipoturmaComponent,
+    FindempresaComponent,
+    FindalunoComponent,
     
   ],
   imports: [
@@ -69,12 +90,16 @@ import { TurmaService } from './views/turma/Turma.Service';
       { path: 'aluno', component: AlunoComponent },
       { path: 'curso', component: CursoComponent },
       { path: 'disciplina', component: DisciplinaComponent },
-      { path: 'escola', component: EscolaComponent },
+      { path: 'empresa', component: EmpresaComponent },
+      { path: 'professor', component: ProfessorComponent },
+      { path: 'professor/editar/:id', component: ProfessorEditarComponent },
       { path: 'turma', component: TurmaComponent },
       { path: 'turma/editar/:id', component: TurmaEditarComponent } 
     ])
   ],
-  providers: [MenuService, FiltrosService, CursoService,TurmaService, HttpClient],
+  providers: [MenuService, CursoService,TurmaService,DisciplinaService,
+              ProfessorService, SalaService, PeriodoService, TipoTurmaService,
+              EmpresaService, HttpClient],
   bootstrap: [AppComponent],
   entryComponents:[DialogViewComponent]
   

@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 import { map, startWith} from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TurmaService } from '../Turma.Service';
-import { TurmaClass } from '../turma.class';
+import { TurmaService } from '../turma.service';
+import { Turma } from "../turma.class";
 import { Alert } from 'selenium-webdriver';
 import { ActivatedRoute } from '@angular/router';
 
@@ -16,8 +16,6 @@ import { ActivatedRoute } from '@angular/router';
 
 export class TurmaEditarComponent implements OnInit {
 
-  lista : TurmaClass[]
-
   turmaForm: FormGroup;
   submitted: boolean;
 
@@ -26,35 +24,62 @@ export class TurmaEditarComponent implements OnInit {
               ,private route : ActivatedRoute 
                ) {
 
+
   }
 
   ngOnInit() {
-    let id = this.route.snapshot.params['id']
-    let item = this.srvTurma.getTurma(id)    
-    this.carregaTela(item)
-  
-  }
-
-  carregaTela(item : TurmaClass):void {
+    
     this.turmaForm = this.fb.group({
-                          TUR_ID :  [item.TUR_ID, Validators.required],
-                          TUR_NOME :  [item.TUR_NOME, Validators.required],
-                          CUR_ID :  [item.CUR_ID],
-                          TUR_ANOSERIE :  [item.TUR_ANOSERIE, Validators.required],
-                          TUR_PERIODO :  [item.TUR_PERIODO, Validators.required],
-                          TUR_ANOLETIVO :  [item.TUR_ANOLETIVO, Validators.required],
-                          TUR_ANOGRADE :  [item.TUR_ANOGRADE, Validators.required],
-                          TUR_DATINI :  [item.TUR_DATINI, Validators.required],
-                          TUR_DATFIM : [item.TUR_DATFIM, Validators.required],
-                          TUR_QTDEALUNOS :  [item.TUR_QTDEALUNOS, Validators.required],
-                          TIP_TUR_ID :  [item.TIP_TUR_ID, Validators.required],
-                          ESC_ID : [item.ESC_ID, Validators.required],
-                          SAL_ID :  [item.SAL_ID, Validators.required],
-                          EMP_ID :  [item.EMP_ID, Validators.required]
-         });
+          TUR_ID :  [null, Validators.required],
+          TUR_NOME :  [null, Validators.required],
+          CUR_ID :  [null],
+          PER_ID :  [null, Validators.required],
+          TUR_ANOLETIVO :  [null, Validators.required],
+          TUR_ANOGRADE :  [null, Validators.required],
+          TUR_DATINI :  [null, Validators.required],
+          TUR_DATFIM : [null, Validators.required],
+          TUR_QTDEALUNOS :  [null, Validators.required],
+          TIP_TUR_ID :  [null, Validators.required],
+          SAL_ID :  [null, Validators.required],
+          EMP_ID :  [null, Validators.required],
+          SER_ID :  [null, Validators.required]
+    });
+    
+    console.log(this.route.snapshot.params['id']);
+
+    this.carregaTela(this.route.snapshot.params['id']);
+
+  }
+ 
+  carregaTela(id: any):void {
+               
+    this.srvTurma.getByID(id).subscribe(data =>  {
+      this.turmaForm.setValue({
+        TUR_ID: data.TUR_ID,
+        TUR_NOME: data.TUR_NOME,
+        CUR_ID: data.CUR_ID,
+        PER_ID :  data.PER_ID,
+        TUR_ANOLETIVO :  data.TUR_ANOLETIVO,
+        TUR_ANOGRADE :  data.TUR_ANOGRADE,
+        TUR_DATINI :  data.TUR_DATINI,
+        TUR_DATFIM : data.TUR_DATFIM,
+        TUR_QTDEALUNOS :  data.TUR_QTDEALUNOS,
+        TIP_TUR_ID : data.TIP_TUR_ID,
+        SAL_ID :  data.SAL_ID,
+        EMP_ID :  data.EMP_ID,
+        SER_ID : data.SER_ID
+      });
+      console.log('Dados :-)\n\n' + JSON.stringify(this.turmaForm.value, null, 4));
+
+    });
+     
   }
 
   salvar():void {
+    if (this.turmaForm.invalid) {
+      alert('inválido!! :-)\n\n' + JSON.stringify(this.turmaForm.value, null, 4));
+      return;
+     }
     this.srvTurma.salvar(JSON.stringify(this.turmaForm.value))
   }
   excluir ():void {
@@ -66,6 +91,11 @@ export class TurmaEditarComponent implements OnInit {
   setCursoID(selectID:any):void{
     
     this.turmaForm.value.CUR_ID = selectID
+   
+  }
+  setSalaID(selectID:any):void{
+    
+    this.turmaForm.value.SAL_ID = selectID
    
   }
   onSubmit() {

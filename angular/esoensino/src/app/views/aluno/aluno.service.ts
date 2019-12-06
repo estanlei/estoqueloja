@@ -1,34 +1,34 @@
-import { CursoClass } from './curso.class';
+import { Aluno } from './aluno.class';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Alert } from 'selenium-webdriver';
-import { retry, catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable()
 
-export class CursoService{
+export class AlunoService{
+    defaultUrl = 'https://localhost:44390/api/aluno/';     
 
-    defaultUrl = 'https://localhost:44390/api/curso/';      
 
     constructor(private http: HttpClient){
 
     }
-    getListaCursos(nome : string): Observable<CursoClass[]>  {
-    
-        let url = this.defaultUrl+"Listar?queryStr="+nome;
+    getLista(nome : string): Observable<Aluno[]>  {
+        
+        let url = this.defaultUrl+"get";
 
-        return this.http.get<CursoClass[]>(url)
+        return this.http.get<Aluno[]>(url)
         .pipe(
           retry(1),
           catchError(this.errorHandl)
         )
     }
-    getCursoByID(id : number): Observable<CursoClass> {
+    getByID(id : number): Observable<Aluno> {
 
-        return this.http.get<CursoClass>(this.defaultUrl + 'get/' + id);
+        return  this.http.get<Aluno>(this.defaultUrl + '/get/' + id);
     }
-        
+    
     errorHandl(error) {
         let errorMessage = '';
         if(error.error instanceof ErrorEvent) {
@@ -42,5 +42,4 @@ export class CursoService{
         alert(errorMessage);
         return throwError(errorMessage);
      }
-
 }

@@ -14,6 +14,7 @@ export class MenuService{
                       {MEN_ID : 5, MEN_DESCRICAO : "Curso", MEN_LOGO : "", MEN_PATH: "/curso", MEN_ACESSO : true,  ITEM_MENU : null},
                       {MEN_ID : 6, MEN_DESCRICAO : "Disciplina", MEN_LOGO : "", MEN_PATH: "/disciplina", MEN_ACESSO : true,  ITEM_MENU : null},
                       {MEN_ID : 7, MEN_DESCRICAO : "Escola", MEN_LOGO : "", MEN_PATH: "/escola", MEN_ACESSO : true,  ITEM_MENU : null},
+                      {MEN_ID : 8, MEN_DESCRICAO : "Professor", MEN_LOGO : "", MEN_PATH: "/professor", MEN_ACESSO : true,  ITEM_MENU : null},
                       {MEN_ID : 8, MEN_DESCRICAO : "Turma", MEN_LOGO : "", MEN_PATH: "/turma", MEN_ACESSO : true,  ITEM_MENU : null},
                     ]
        },

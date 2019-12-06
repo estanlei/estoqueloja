@@ -14,6 +14,10 @@
                 <ul class="treeview-menu">
                     <li *ngFor="let submenu of menu.ITEM_MENU">
                         <a  [routerLink]=[submenu?.MEN_PATH]>{{submenu?.MEN_DESCRICAO}}</a>
+                        <div>
+                            {{menuend.cep}}
+                        </div>
+                        
                     </li>
                 </ul>
             </li>

@@ -1,6 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+export interface DialogData {
+  tipo:  number;
+  header:  string;
+  mensage:  string;
+}
 
 @Component({
   selector: 'app-dialog-view',
@@ -13,7 +18,9 @@ export class DialogViewComponent implements OnInit {
   }
 
   constructor(
-    public dialogRef: MatDialogRef<DialogViewComponent>) {}
+    public dialogRef: MatDialogRef<DialogViewComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+   
 
   onNoClick(): void {
     this.dialogRef.close();

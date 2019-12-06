@@ -1,34 +1,34 @@
-import { CursoClass } from './curso.class';
+import { Empresa } from './empresa.class';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Alert } from 'selenium-webdriver';
-import { retry, catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { Filtro } from 'src/app/model/filtro.class';
 
 @Injectable()
 
-export class CursoService{
-
-    defaultUrl = 'https://localhost:44390/api/curso/';      
+export class EmpresaService{
+    defaultUrl = 'https://localhost:44390/api/empresa/';     
 
     constructor(private http: HttpClient){
 
     }
-    getListaCursos(nome : string): Observable<CursoClass[]>  {
-    
-        let url = this.defaultUrl+"Listar?queryStr="+nome;
+    getLista(param : Filtro): Observable<Empresa[]>  {
+        
+        let url = this.defaultUrl+"get?queryStr="+ JSON.stringify(param);
 
-        return this.http.get<CursoClass[]>(url)
+        return this.http.get<Empresa[]>(url)
         .pipe(
           retry(1),
           catchError(this.errorHandl)
         )
     }
-    getCursoByID(id : number): Observable<CursoClass> {
+    getByID(id): Observable<Empresa> {
 
-        return this.http.get<CursoClass>(this.defaultUrl + 'get/' + id);
+        return  this.http.get<Empresa>(this.defaultUrl + '/get/' + id);
     }
-        
+    
     errorHandl(error) {
         let errorMessage = '';
         if(error.error instanceof ErrorEvent) {
@@ -42,5 +42,4 @@ export class CursoService{
         alert(errorMessage);
         return throwError(errorMessage);
      }
-
 }

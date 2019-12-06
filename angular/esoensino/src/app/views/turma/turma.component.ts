@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FiltroClass } from 'src/app/model/filtro.class';
-import { TurmaService } from './Turma.Service';
+import { Filtro } from 'src/app/model/filtro.class';
+import { TurmaService } from './turma.service';
+import { Turma } from "./turma.class";
+
 
 @Component({
   selector: 'app-turma',
@@ -8,8 +10,8 @@ import { TurmaService } from './Turma.Service';
 })
 export class TurmaComponent implements OnInit {
 
-  lstturma : any[]
-  lstfiltro: FiltroClass []
+  lstturma : Turma[];
+
 
   constructor(private srvTurma : TurmaService ) {
    
@@ -19,10 +21,14 @@ export class TurmaComponent implements OnInit {
    
   }
 
-  listar(param: FiltroClass[]) {
-    this.lstturma = this.srvTurma.getListaTurma("");
+  listar(param:Filtro) {
+    
+      this.srvTurma.getLista(param).subscribe((data: Turma[]) => {
+      this.lstturma = data;
+
+    });
+    
   }
-
-
+  
 
 }

@@ -1,9 +1,10 @@
-export class FiltroClass{
-    FIL_ID : Number
-    FIL_DESCRICAO : String
-    FIL_TIPO : String
-    FIL_COMPONENTE: String
+export class Filtro{
+    CUR_ID : Number
+    CUR_NOME : string
+    TIP_TUR_ID : Number
     EMP_ID : Number
-    FIL_SEQTELA : Number
-    FIL_VALUE : String
+    EMP_RAZAO_SOCIAL : string
+    PER_ID : Number
+    TUR_ID : Number
+    TUR_NOME : string
  }

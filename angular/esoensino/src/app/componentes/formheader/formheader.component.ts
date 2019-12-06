@@ -20,10 +20,10 @@ export class FormheaderComponent implements OnInit {
     
   }
 
-  openDialog(): void {
+  openDialog(titulo : string, mensagem : string ): void {
     const dialogRef = this.dialog.open(DialogViewComponent, {
       panelClass: 'my-dialog',
-      data: {tipo: this.tipo, header: "", mensagem :""}
+      data: {tipo: this.tipo, header: titulo, mensage :mensagem}
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
@@ -46,16 +46,16 @@ export class FormheaderComponent implements OnInit {
   }
   emitSalvar(itens: any){
     this.tipo = 1
-    this.openDialog();
+    this.openDialog("ESOENSINO - ATENÇÃO","Deseja realmente salvar este registro?");
 
   }
   emitExcluir(itens: any){
     this.tipo = 2
-    this.openDialog();
+    this.openDialog("ESOENSINO - ATENÇÃO","Deseja realmente excluir este registro?");
   }
   emitRefresh(itens: any){
     this.tipo = 3
-    this.openDialog();
+    this.openDialog("ESOENSINO - ATENÇÃO","Deseja realmente atualizar a tela?");
   }
 
 }

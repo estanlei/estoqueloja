@@ -1,12 +1,13 @@
 <mat-form-field >
-    <mat-label>Informe o Curso</mat-label>
-    <input matInput [matAutocomplete]="auto" [formControl]="frmCtrl" >
+    <mat-label>Informe a Empresa</mat-label>
+    <input matInput [matAutocomplete]="auto" [formControl]="frmCtrlEmpresa">
     <mat-icon matSuffix><i class="glyphicon glyphicon-search"></i></mat-icon>
+    <mat-hint>Hint</mat-hint>
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onSelectionChanged($event)">
         <mat-option *ngFor="let item of filteredOptions | async" [value]="item">
             <i class="fa fa-user" height="25" style="vertical-align: middle;margin-right: 8px;"></i>
-            <span>{{item.CUR_NOME}}</span> |
-            <small> ID: {{item.CUR_ID}}</small>
+            <span>{{item.EMP_RAZAO_SOCIAL}}</span> |
+            <small> ID: {{item.EMP_ID}}</small>
         </mat-option>
     </mat-autocomplete>
 </mat-form-field>

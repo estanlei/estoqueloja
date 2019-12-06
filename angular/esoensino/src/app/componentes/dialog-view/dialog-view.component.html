@@ -1,6 +1,6 @@
-<h1 mat-dialog-title>ESOENSINO - ATENÇÃO</h1>
+<h1 mat-dialog-title><I class="fa fa-question-circle"></I> {{data.header}}</h1>
 <div mat-dialog-content>
-    <p>Confirma a alteração do registro?</p>
+    <p>{{data.mensage}}</p>
 </div>
 <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Não</button>

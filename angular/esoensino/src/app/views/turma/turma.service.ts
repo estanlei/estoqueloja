@@ -1,92 +1,67 @@
-
+import { Turma } from "./turma.class";
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 import { Alert } from 'selenium-webdriver';
-import { TurmaClass } from './turma.class';
+import { Observable, throwError, ObservableInput } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { Filtro } from 'src/app/model/filtro.class';
+
 
 @Injectable()
 
 export class TurmaService{
 
-    defaultUrl = 'esoescola/api';
-
-    lista : TurmaClass[]  = [
-        {TUR_ID: 1,TUR_NOME:"5° SERIE", CUR_ID :2, TUR_ANOSERIE : "2019", TUR_PERIODO : "Manhã",
-        TUR_ANOLETIVO : "2019",
-        TUR_ANOGRADE : "2019",
-        TUR_DATINI : "01/01/2019",
-        TUR_DATFIM : "01/01/2019",
-        TUR_QTDEALUNOS : 10,
-        TIP_TUR_ID : 1,
-        ESC_ID : 1,
-        SAL_ID : "SALA 2",
-        EMP_ID : 1},
-        {TUR_ID: 2,TUR_NOME:"6° SERIE",    CUR_ID : 5,
-        TUR_ANOSERIE : "2019",
-        TUR_PERIODO : "Manhã",
-        TUR_ANOLETIVO : "2019",
-        TUR_ANOGRADE : "2019",
-        TUR_DATINI : "01/01/2019",
-        TUR_DATFIM : "01/01/2019",
-        TUR_QTDEALUNOS : 10,
-        TIP_TUR_ID : 1,
-        ESC_ID : 1,
-        SAL_ID : "SALA 2",
-        EMP_ID : 1},
-        {TUR_ID: 3,TUR_NOME:"7° SERIE",    CUR_ID : 6,
-        TUR_ANOSERIE : "2019",
-        TUR_PERIODO : "Manhã",
-        TUR_ANOLETIVO : "2019",
-        TUR_ANOGRADE : "2019",
-        TUR_DATINI : "01/01/2019",
-        TUR_DATFIM : "01/01/2019",
-        TUR_QTDEALUNOS : 10,
-        TIP_TUR_ID : 1,
-        ESC_ID : 1,
-        SAL_ID : "SALA 2",
-        EMP_ID : 1},
-        {TUR_ID: 4,TUR_NOME:"8° SERIE",    CUR_ID : 3,
-        TUR_ANOSERIE : "2019",
-        TUR_PERIODO : "Tarde",
-        TUR_ANOLETIVO : "2019",
-        TUR_ANOGRADE : "2019",
-        TUR_DATINI : "01/01/2019",
-        TUR_DATFIM : "01/01/2019",
-        TUR_QTDEALUNOS : 10,
-        TIP_TUR_ID : 1,
-        ESC_ID : 1,
-        SAL_ID : "SALA 2",
-        EMP_ID : 1},
-        {TUR_ID: 5,TUR_NOME:"8° SERIE",    CUR_ID : 1,
-        TUR_ANOSERIE : "2019",
-        TUR_PERIODO : "Noite",
-        TUR_ANOLETIVO : "2019",
-        TUR_ANOGRADE : "2019",
-        TUR_DATINI : "01/10/2019",
-        TUR_DATFIM : "01/01/2019",
-        TUR_QTDEALUNOS : 20,
-        TIP_TUR_ID : 2,
-        ESC_ID : 1,
-        SAL_ID : "SALA 2",
-        EMP_ID : 1}];
-        
+    defaultUrl = 'https://localhost:44390/api/Turma/';       
       
     constructor(private http: HttpClient){
 
+  
     }
-    getListaTurma(nome : string): TurmaClass[]  {
-    
-        return this.lista.filter(x => x.TUR_NOME.toLowerCase().startsWith(nome.toLowerCase()))
-    }
-    getTurma(id : number): TurmaClass {
 
-        return this.lista.find(x => x.TUR_ID == id)
+  // POST
+   // CreateBug(data): Observable<Bug> {
+   //     return this.http.post<Bug>(this.baseurl + '/bugtracking/', JSON.stringify(data), this.httpOptions)
+   //     .pipe(
+   //     retry(1),
+ //      catchError(this.errorHandl)
+ //       )
+  //  } 
+
+    getLista(param : Filtro) : Observable<Turma[]> {
+      
+        let params = new HttpParams();
+       // param.PER_ID.toString()
+       let tipo = param.TIP_TUR_ID.toString()
+       //param.CUR_ID.toString()
+       // Begin assigning parameters
+       params = params.append('turnome', param.TUR_NOME);
+       params = params.append('perid', '0');
+       params = params.append('tipturid','0' );
+       params = params.append('curid','0');
+
+       // params = params.append('queryStr', param.TUR_NOME);
+
+        //let url = this.defaultUrl+"Listar?queryStr="+ JSON.stringify(param);
+        let url = this.defaultUrl+"Listar";
+
+        return this.http.get<Turma[]>(url,{params:params})
+        .pipe(
+          catchError(this.errorHandl)
+        )
+  
     }
+
+    getByID(id): Observable<Turma> {
+         return this.http.get<Turma>(this.defaultUrl + 'Buscar/' + id) 
+         .pipe(
+           catchError(this.errorHandl)
+          )
+
+      }
+
 
     salvar(itens: any):void {
            alert("0");
-
-      // this.http.get<TurmaClass>(this.defaultUrl,{ entity: itens });
     }
     excluir(itens: any):void {
         alert("2");
@@ -94,6 +69,19 @@ export class TurmaService{
     refresh(itens: any):void {
         alert("3");
     }
+    
+    errorHandl(error) {
+        let errorMessage = '';
+        if(error.error instanceof ErrorEvent) {
+          // Get client-side error
+          errorMessage = error.error.message;
+        } else {
+          // Get server-side error
+          errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        console.log(errorMessage);
  
+        return throwError(errorMessage);
+     }
 
 }

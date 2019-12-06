@@ -14,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FindcursoComponent implements OnInit {
 
+  lstcurso : CursoClass[];
+  cur : CursoClass;
   frmCtrl = new FormControl()
   filteredOptions: Observable<CursoClass[]>
   @Input() curID  : any
@@ -21,9 +23,6 @@ export class FindcursoComponent implements OnInit {
   
   constructor(private srvServico : CursoService) {
 
-  }
-  ngOnInit() {
-  
     this.frmCtrl.setValue(this.getCursoByID(this.curID));
 
     this.filteredOptions = this.frmCtrl.valueChanges
@@ -34,21 +33,25 @@ export class FindcursoComponent implements OnInit {
     );
 
   }
+  ngOnInit() {
+  
+  }
 
   private getCursos(value: string): CursoClass[] {
-     return  this.srvServico.getListaCursos(value);
+     this.srvServico.getListaCursos(value).subscribe(data => this.lstcurso = data);
+     return this.lstcurso;
   }
   private getCursoByID(value: number): CursoClass{
-    return  this.srvServico.geCurso(value);
- }
 
+    this.srvServico.getCursoByID(value).subscribe(data => this.cur = data);
+    return this.cur;
+ }
  
   onSelectionChanged(event: MatAutocompleteSelectedEvent) {
      this.setID.emit(event.option.value.CUR_ID)
   }
   displayFn(item?: CursoClass): String | undefined {
- //   alert(JSON.stringify(item, null, 4));
     return item ? item.CUR_NOME : undefined;
   }
-  
+
 }

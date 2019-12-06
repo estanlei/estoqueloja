@@ -1,6 +1,6 @@
-import { Component, OnInit,  EventEmitter, Output, Input } from '@angular/core';
-import { FiltroClass } from 'src/app/model/filtro.class';
-import { FiltrosService } from 'src/app/service/filtros.service';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Filtro} from 'src/app/model/filtro.class';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -9,24 +9,31 @@ import { FiltrosService } from 'src/app/service/filtros.service';
 })
 export class FiltropesquisaComponent implements OnInit {
 
-  lstfiltro: FiltroClass []
-  @Input() itens : any[]
-  @Output() pesquisar = new EventEmitter<FiltroClass[]>()
+  frmctrl: FormGroup;
+  lstfiltro: Filtro[]
+  @Output() pesquisar = new EventEmitter<Filtro[]>()
 
 
-  constructor(private filtroSrv : FiltrosService) { }
+  constructor(private fb: FormBuilder) {
+    this.frmctrl = this.fb.group({
+      CUR_ID : new FormControl(""),
+      TUR_NOME: new FormControl(""),
+      TIP_TUR_ID : new FormControl(""),
+      PER_ID : new FormControl("")
+    });
+  }
 
   ngOnInit() {
-    this.lstfiltro = this.filtroSrv.getListaFiltros()
+
   }
 
-  emitPesquisar(){
-    this.pesquisar.emit(this.lstfiltro)
+  emitPesquisar() {
+    this.pesquisar.emit(this.frmctrl.value)
   }
 
-  limparFiltros(){
+  limparFiltros() {
 
-    this.lstfiltro.forEach(element => { element.FIL_VALUE = null })
+    //this.lstfiltro.forEach(element => { element.FIL_VALUE = null })
 
   }
   // -- Caso o a lista de filtros viesse de outro componente
@@ -36,7 +43,7 @@ export class FiltropesquisaComponent implements OnInit {
   step = 0
 
   setStep(index: number) {
-       this.step  = index
+    this.step = index
   }
 
   nextStep() {
@@ -46,6 +53,21 @@ export class FiltropesquisaComponent implements OnInit {
   prevStep() {
     this.step--;
   }
-
+  setPeriodoID(selectID:any):void{
+  
+    this.frmctrl.value.PER_ID = selectID;
+   
+  }
+  setCursoID(selectID:any):void{
+  
+    this.frmctrl.value.CUR_ID = selectID;
+   
+  }
+  setTipoTurmaID(selectID:any):void{
+  
+    this.frmctrl.value.TIP_TUR_ID = selectID;
+   
+  }
+  
 
 }
